@@ -27,6 +27,25 @@ SELECT * FROM campusx.smartphones WHERE brand_name ='samsung' AND processor_bran
 UPDATE campusx.smartphones 
 SET processor_brand ='dimensity'
 WHERE processor_brand ='mediatek';
+SELECT * FROM campusx.smartphones ORDER BY brand_name, price ASC;
+SELECT brand_name , COUNT(brand_name),ROUND(AVG(price),2),MAX(rating) FROM campusx.smartphones GROUP BY brand_name ORDER BY COUNT(brand_name) DESC;
+SELECT brand_name,processor_brand, 	COUNT(model)  FROM campusx.smartphones GROUP BY brand_name, processor_brand;
+SELECT brand_name, ROUND(AVG(price),2) AS avg_price FROM campusx.smartphones GROUP BY brand_name ORDER BY avg_price DESC LIMIT 5;
+SELECT brand_name, MIN(screen_size) FROM campusx.smartphones GROUP BY brand_name ORDER BY MIN(screen_size) ASC LIMIT 1;
+SELECT has_5g, AVG(price) as avg_price FROM campusx.smartphones GROUP BY has_5g;
+SELECT has_nfc , AVG(PRICE) as avg_price FROM campusx.smartphones WHERE brand_name ='samsung' AND has_5g = 'TRUE' GROUP BY has_nfc;
+SELECT brand_name, COUNT(*), AVG(price) as avg_price FROM campusx.smartphones GROUP BY  brand_name HAVING COUNT(*)>20 ORDER by avg_price DESC;
+SELECT brand_name,AVG(ram_capacity) as avg_ram FROM campusx.smartphones WHERE refresh_rate > 90
+ AND fast_charging_available =1 GROUP BY brand_name HAVING COUNT(*)>10 ORDER BY avg_ram DESC LIMIT 3;
+ SELECT brand_name, AVG(price) as avg_price, AVG(rating) as avg_rating FROM campusx.smartphones WHERE has_5g ='TRUE' GROUP BY brand_name HAVING COUNT(*) >10 AND avg_rating>70
+
+
+
+
+
+
+
+
 
 
 
